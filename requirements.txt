@@ -1,0 +1,3 @@
+pandas
+tqdm
+git+https://github.com/joeyism/basketball_reference_web_scraper.git
