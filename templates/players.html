@@ -1,0 +1,35 @@
+<title>Player List</title>
+<h1>Players</h1>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Drafted yet?</th>
+  </tr>
+  {% for id, name, age, drafted in data %}
+    <TR>
+        <TD>{{ id }}</TD>
+        <TD>{{ name }}</TD>
+        <TD>{{ age }}</TD>
+        <TD><input type="checkbox" {% if drafted %}checked{% else %}{% endif %} disabled></TD>
+    </TR>
+  {% endfor %}
+</table>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
