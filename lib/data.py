@@ -3,9 +3,14 @@ from datetime import timedelta
 from lib.cache import get_cache
 
 class Data(object):
+  DEFAULT_SEASON_YEAR = 2019
+  THIS_SEASON_PLAYER_FILENAME = "data/this_season_player_data.csv"
 
-  def __init__(self, season_year=2019):
-    self.season_year = season_year
+  def __init__(self, season_year=None):
+    if season_year is None:
+      self.season_year = self.DEFAULT_SEASON_YEAR
+    else:
+      self.season_year = season_year
 
     self.full_schedule = get_cache(
         path=f'{self.season_year}_full_schedule',

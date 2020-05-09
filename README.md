@@ -4,7 +4,32 @@ This is a library that simulates past Yahoo Fantasy NBA, to help you check how w
 Supported Format:
 * Head to Head
 
-## How to Run
+## How to Run Draft
+
+### Host
+Run
+```bash
+python3 app.py
+```
+
+Wait for users to start their own servers. Then run
+```bash
+honcho run python3 setup_draft.py --no-players $NUM_PLAYERS --restart
+```
+
+### Users
+Start `ngrok` via
+```bash
+ngrok http 8080
+```
+and give your host the ngrok URL.
+
+Create an API similar to the one in `mock_drafter_app.py`, then execute it via
+```bash
+python3 mock_drafter_app.py
+```
+
+## How to Run Simulation
 You must supply files, each with a list of NBA players for each user/player. Then, run the simulation to see which user/player wins
 
 

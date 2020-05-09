@@ -1,3 +1,3 @@
 from .data import Data
-from .user import User
+from .participants import Participants
 from .scoring_system import ScoringSystem
