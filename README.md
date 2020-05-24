@@ -17,6 +17,11 @@ Wait for users to start their own servers. Then run
 ```bash
 honcho run python3 setup_draft.py --no-players $NUM_PLAYERS --restart
 ```
+or
+```bash
+honcho run python3 setup_draft.py --no-players $NUM_PLAYERS --restart --prompt-each
+```
+to prompt the URL for each participant
 
 This should call user urls and autodraft. To run the simulation, run
 ```bash

@@ -28,7 +28,7 @@ def draft(all_participants, df_filename="data/this_season_player_data.csv"):
         print(f"Error for participant {participant.id} ", err)
 
 
-def run(no_players, restart=False):
+def run(no_players, restart=False, prompt_each=False):
   if restart:
     setup_simulation.start()
     participant_ids = [str(uuid.uuid4()) for _ in range(no_players)]
@@ -38,6 +38,12 @@ def run(no_players, restart=False):
 
   if os.path.exists(Participants.PLAYER_URLS_FILENAME) and not restart:
     participant_urls = Participants.get_participant_urls()
+  elif prompt_each:
+    participant_urls = []
+    for i, participant_id in enumerate(participant_ids):
+      url = input(f"Url for user {participant_id}: ")
+      participant_urls.append(url)
+    Participants.write_participant_urls(participant_urls)
   else:
     participant_urls = input("Urls: ").split()
     Participants.write_participant_urls(participant_urls)
@@ -45,16 +51,19 @@ def run(no_players, restart=False):
   participants = []
   for id, url in zip(participant_ids, participant_urls):
     participants.append(Participants(id, url))
+
+  input("Press enter to draft")
   draft(participants)
 
 
 def main():
   parser = argparse.ArgumentParser()
   parser.add_argument("--restart", action="store_true")
+  parser.add_argument("--prompt-each", action="store_true")
   parser.add_argument("--no-players", help="Number of players in draft", type=int)
 
   args = parser.parse_args()
-  run(args.no_players, restart=args.restart)
+  run(args.no_players, restart=args.restart, prompt_each=args.prompt_each)
 
 if __name__ == '__main__':
   main()
