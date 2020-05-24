@@ -2,6 +2,7 @@ f"""
 Sample run
   python3 {__file__} --player1_file data/sample_joey_file.txt --player2_file data/sample_leo_file.txt --player1_name Joey --player2_name Leo --verbose
 """
+import os
 from lib import Data, ScoringSystem
 from tqdm import tqdm
 import pandas as pd
@@ -23,6 +24,7 @@ def _sum_for_list_of_players_(df, players):
 def print_common_wins(total_wins, name):
   user_counter = Counter(total_wins).most_common()
   print(f"\n{name} wins:\n" + "\n".join([f"\t{count[0]}: {count[1]}" for count in user_counter]))
+  print(f"\nTotal wins:\t{len(total_wins)}")
 
 def head_to_head_season(user1_players, user2_players, user1_name="User 1", user2_name="User 2", year=os.getenv("YEAR", 2020), verbose=False):
   if verbose:

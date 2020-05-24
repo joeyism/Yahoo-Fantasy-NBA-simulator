@@ -11,10 +11,16 @@ Run
 ```bash
 python3 app.py
 ```
+and keep it running
 
 Wait for users to start their own servers. Then run
 ```bash
 honcho run python3 setup_draft.py --no-players $NUM_PLAYERS --restart
+```
+
+This should call user urls and autodraft. To run the simulation, run
+```bash
+honcho run python3 simulate.py
 ```
 
 ### Users
@@ -35,9 +41,9 @@ You must supply files, each with a list of NBA players for each user/player. The
 
 ## Sample Run
 
-### Normal Run
+### Head-to-Head Run
 ```bash
-python3 simulate.py --player1_file data/sample_joey_file.txt --player2_file data/sample_leo_file.txt --player1_name Joey --player2_name Leo
+python3 simulate_h2h.py --player1_file data/sample_joey_file.txt --player2_file data/sample_leo_file.txt --player1_name Joey --player2_name Leo
 ```
 
 returns

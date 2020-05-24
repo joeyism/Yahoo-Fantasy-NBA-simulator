@@ -31,6 +31,8 @@ class Participants(object):
   @classmethod
   def get_participants(cls):
     participants = []
+    participant_ids = Participants.get_participant_ids()
+    participant_urls = Participants.get_participant_urls()
     for id, url in zip(participant_ids, participant_urls):
       participants.append(Participants(id, url))
     return participants
