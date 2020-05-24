@@ -35,7 +35,7 @@ ngrok http 8080
 ```
 and give your host the ngrok URL.
 
-Create an API similar to the one in `mock_drafter_app.py`, then execute it via
+Create an API similar to the one in `mock_drafter_app*.py`, then execute it via
 ```bash
 python3 mock_drafter_app.py
 ```
@@ -111,3 +111,24 @@ Leo wins:
 	assists: 5
 	total_rebounds: 2
 ```
+
+## Development
+To run all the instances of mock drafters, run
+
+```bash
+honcho start
+``` 
+then run
+```bash
+honcho run python3 setup_draft.py --no-players 4 --restart
+```
+with Urls input
+```
+http://localhost:8080 http://localhost:8081 http://localhost:8082 http://localhost:8083
+```
+to setup the draft, and 
+
+```bash
+honcho run python3 simulate.py
+```
+to simulate
