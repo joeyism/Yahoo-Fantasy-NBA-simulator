@@ -3,7 +3,7 @@ from lib import Data
 from tqdm import tqdm
 import pandas as pd
 
-YEAR = int(os.getenv("YEAR"))
+YEAR = int(os.getenv("YEAR", 2020))
 PREVIOUS_YEAR = YEAR - 1
 DATA = Data(YEAR)
 PREVIOUS_YEAR_DATA = Data(PREVIOUS_YEAR)

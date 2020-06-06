@@ -1,6 +1,10 @@
 from basketball_reference_web_scraper import client
 from datetime import timedelta
 from lib.cache import get_cache
+from dateutil import tz
+
+EST = tz.gettz('America/Toronto')
+
 
 class Data(object):
   DEFAULT_SEASON_YEAR = 2019
@@ -24,7 +28,7 @@ class Data(object):
 
     self.SLUG_NAME_CONVERTER = dict((player['slug'], player['name'].lower()) for player in self.player_total)
     self.NAME_SLUG_CONVERTER = dict((player['name'].lower(), player['slug']) for player in self.player_total)
-    self.game_dates = sorted(list(set(game['start_time'].date() for game in self.full_schedule)))
+    self.game_dates = sorted(list(set(game['start_time'].astimezone(EST).date() for game in self.full_schedule)))
 
   def per_day_game_data(self):
     for date in self.game_dates:

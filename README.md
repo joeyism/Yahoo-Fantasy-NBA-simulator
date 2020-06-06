@@ -5,8 +5,12 @@ Supported Format:
 * Head to Head
 
 ## How to Run Draft
-
 ### Host
+To download the data, run
+```bash
+python3 setup_simulation.py
+```
+
 Run
 ```bash
 python3 app.py
